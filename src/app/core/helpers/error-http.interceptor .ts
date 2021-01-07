@@ -23,12 +23,15 @@ export class ErrorHttpInterceptor implements HttpInterceptor {
 
         return next.handle(request).pipe(
             catchError(err => {
-
-
                 if (err.status === 401) {
-                    console.error('Expired token', err.status)
+                    localStorage.clear();
+                    this.spotifyService.getNewToken().subscribe((response: any) => {
+                        const token = response.data.access_token;
+                        localStorage.setItem('token', token);
+                    }, (error: any) => {
+                        console.error('Expired token', err.status)
+                    });
                 }
-                
                 const error = err.error.message || err.statusText;
                 return throwError(err);
             })

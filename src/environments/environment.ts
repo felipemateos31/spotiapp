@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://api.spotify.com/v1/'
+  apiUrl: 'https://api.spotify.com/v1/',
+  apiLocalUrl : 'https://localhost:44343/api/spotify'
 };
 
 /*

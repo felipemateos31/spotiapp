@@ -8,6 +8,11 @@ export class PathConstants {
     static ARTIST_TOP_TRACKS = 'artists/{id}/top-tracks?market=es';
 
     public static getPath(path) {
-        return `${environment.apiUrl}${path}`
+        return `${environment.apiUrl}${path}`;
+    }
+
+
+    public static getPathLocal(){
+        return environment.apiLocalUrl;
     }
 }

@@ -39,6 +39,21 @@ export class SpotifyService {
     const headers = new HttpHeaders();
 
     const url = PathConstants.getPath(PathConstants.ARTIST_TOP_TRACKS).replace('{id}', id);
-    return this.httpClient.get(url, { headers }).pipe(map(reponse=> reponse['tracks']));
+    return this.httpClient.get(url, { headers }).pipe(map(reponse => reponse['tracks']));
+  }
+
+  //Get New Token API (Net Core)
+  getNewToken() {
+    const headers = new HttpHeaders({
+      ...ConfigConstants.HEADERS_NO_AUTH
+    });
+
+    const url = PathConstants.getPathLocal();
+    return this.httpClient.get(url, { headers });
+  }
+
+  //Get Token 
+  getToken(){
+    return localStorage.getItem('token');
   }
 }
