@@ -25,7 +25,7 @@ export class SearchComponent implements OnInit {
         this.loading = false;
         this.artists = response;
       }, (error: any) => {
-
+        console.error('getArtistsError', error);
       });
     }
   }

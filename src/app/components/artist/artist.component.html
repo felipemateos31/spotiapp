@@ -18,3 +18,36 @@
         </button>
     </div>
 </div>
+
+<div class="row m-5">
+    <div class="col">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Foto</th>
+                    <th>Album</th>
+                    <th>Canción</th>
+                    <th>Vista Previa</th>
+                </tr>
+            </thead>
+            <tbody>
+                <ng-container *ngFor="let track of topTracks">
+                    <tr>
+                        <td>
+                            <img [src]="track.album.images | noimage" class="img-thumb" alt="Responsive image">
+                        </td>
+                        <td>
+                            {{track.album.name}}
+                        </td>
+                        <td>
+                            {{track.name}}
+                        </td>
+                        <td>
+                            <iframe [src]="track.uri | safedom:'https://open.spotify.com/embed?uri='" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                        </td>
+                    </tr>
+                </ng-container>
+            </tbody>
+        </table>
+    </div>
+</div>
